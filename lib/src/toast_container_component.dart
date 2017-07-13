@@ -9,7 +9,7 @@ import 'package:angular_components/angular_components.dart';
 
 @Component(
     selector: 'toast-container',
-    template: '<div class="toastContainer" #toastContainer></div><button (click)="createToast()">create</button><button (click)="removeFirstToast()">remove first</button>',
+    template: '<span #toastContainer></span><button (click)="createToast()">create</button><button (click)="removeFirstToast()">remove first</button>',
     styleUrls: const ['toast_container_component.css'],
 )
 class ToastContainer implements OnInit {
