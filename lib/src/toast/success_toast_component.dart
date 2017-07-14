@@ -9,6 +9,8 @@ import 'package:angular2/core.dart';
 )
 class SuccessToast extends Toast{
 
+  SuccessToast() : super();
+
   @override
   void action() {
    this.classNames = classNames + " success";

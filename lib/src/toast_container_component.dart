@@ -6,7 +6,7 @@ import 'package:angular2/angular2.dart';
 
 @Component(
     selector: 'toast-container',
-    template: '<span #toastContainer></span><button (click)="successToast()">create</button><button (click)="removeFirstToast()">remove first</button>',
+    template: '<span #toastContainer></span><button (click)="successToast()" style="position: absolute; bottom: 100px;">create</button><button (click)="removeFirstToast()" style="position: absolute; bottom: 80px;">remove first</button>',
     styleUrls: const ['toast_container_component.css'],
 )
 class ToastContainer implements OnInit {
@@ -44,6 +44,7 @@ class ToastContainer implements OnInit {
       toast.action();
       next++;
       print(next);
+      //Timer to remove toast
     });
   }
 
