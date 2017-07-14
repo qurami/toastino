@@ -1,27 +1,27 @@
 import 'package:angular2/core.dart';
-import 'package:angular2/platform/browser.dart';
 import 'package:toastino/src/toast/toast_component.dart';
+import 'package:toastino/src/toast/success_toast_component.dart';
 import 'dart:core';
-import 'dart:html';
-import 'dart:async';
 import 'package:angular2/angular2.dart';
-import 'package:angular_components/angular_components.dart';
 
 @Component(
     selector: 'toast-container',
-    template: '<span #toastContainer></span><button (click)="createToast()">create</button><button (click)="removeFirstToast()">remove first</button>',
+    template: '<span #toastContainer></span><button (click)="successToast()">create</button><button (click)="removeFirstToast()">remove first</button>',
     styleUrls: const ['toast_container_component.css'],
 )
 class ToastContainer implements OnInit {
+  // Toast component factory
   DynamicComponentLoader toastLoader;
+  // Reference to toastContainer
   @ViewChild('toastContainer', read: ViewContainerRef)
   ViewContainerRef containerRef;
 
-  List<ComponentRef> toastLoaded;
+  // List of created and living toast
+  List<ComponentRef> activeToasts;
   int next;
 
   ToastContainer(this.toastLoader, this.containerRef) {
-    this.toastLoaded = new List<ComponentRef>();
+    this.activeToasts = new List<ComponentRef>();
     this.next = 0;
   }
 
@@ -29,28 +29,33 @@ class ToastContainer implements OnInit {
   ngOnInit() async {
   }
 
+  void successToast(){
+    createToast(SuccessToast);
+  }
+
   // Implementing FIFO style management
   // createToast creates a new toast component, puts data in it and save it into map using sequential keys
-  void createToast() {
-    toastLoader.loadNextToLocation(Toast, containerRef).then((ComponentRef cRef) {
-      this.toastLoaded.add(cRef);
+  void createToast(Type toastType) {
+    toastLoader.loadNextToLocation(toastType, containerRef).then((ComponentRef cRef) {
+      this.activeToasts.add(cRef);
       Toast toast = cRef.instance;
       toast.setId(this.next);
       toast.setTitle("ciao"+this.next.toString());
+      toast.action();
       next++;
       print(next);
     });
   }
 
-  //
+  // removeFirstToast removes the first toast in toastList
   void removeFirstToast() {
-    this.toastLoaded.first.destroy();
-    this.toastLoaded.removeAt(0);
+    this.activeToasts.first.destroy();
+    this.activeToasts.removeAt(0);
     updateActiveToasts();
     next--;
   }
-  
+  // updateActiveToast updates id after toast removal
   void updateActiveToasts(){
-    this.toastLoaded.forEach((ComponentRef cRef) => cRef.instance.setId(cRef.instance.getId()-1));
+    this.activeToasts.forEach((ComponentRef cRef) => cRef.instance.setId(cRef.instance.getId()-1));
   }
 }

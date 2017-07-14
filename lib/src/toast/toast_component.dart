@@ -1,15 +1,4 @@
-
-
-import 'package:angular2/core.dart';
-
-
-@Component(
-  selector: 'toast',
-  templateUrl: 'toast_component.html',
-  host: const {'[class]' : 'classNames'},
-  styleUrls: const ['toast_component.css'],
-)
-class Toast{
+abstract class Toast{
   int id;
   String title, message;
 
@@ -32,4 +21,5 @@ class Toast{
     this.classNames = "pos"+id.toString();
   }
 
+  void action();
 }
