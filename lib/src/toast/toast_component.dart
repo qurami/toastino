@@ -1,5 +1,5 @@
 abstract class Toast{
-  int id;
+  int position;
   String title, message;
 
   String classNames;
@@ -10,15 +10,17 @@ abstract class Toast{
     this.classNames = "";
   }
 
-  void setTitle(String title){
-    this.title = title;
-  }
+  int getPosition() => this.position;
 
-  int getId() => this.id;
+  void setPosition(int position) => this.position = position;
 
-  void setId(int id) {
-    this.id = id;
-    this.classNames = "pos"+id.toString();
+  void setTitle(String title) => this.title = title;
+
+  void setMessage(String message) => this.message = message;
+
+  // updateToast updates CSS classes when component position changes
+  void updateCSS() {
+    this.classNames = "pos"+this.position.toString();
   }
 
   void action();
