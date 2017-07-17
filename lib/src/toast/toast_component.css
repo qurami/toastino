@@ -21,42 +21,6 @@
     opacity: 0;
 }
 
-:host(.pos0){
-    top:0;
-}
-
-:host(.pos1){
-    top:60px;
-}
-
-:host(.pos2){
-    top:120px;
-}
-
-:host(.pos3){
-    top:180px;
-}
-
-:host(.pos4){
-    top:240px;
-}
-
-:host(.pos5){
-    top:300px;
-}
-
-:host(.pos6){
-    top: 360px;
-}
-
-:host(.pos7){
-    top:420px;
-}
-
-:host(.pos8){
-    top:480px;
-}
-
 :host(.success){
     background-color: green;
 }

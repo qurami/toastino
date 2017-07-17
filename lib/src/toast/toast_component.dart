@@ -22,21 +22,18 @@ abstract class Toast{
 
   void setMessage(String message) => this.message = message;
 
-  // updateToast updates CSS classes when component position changes
-  String cssClassesToString() {
+  // updateCss updates CSS classes when component position changes
+  String updateCss() {
     this.cssClasses = "";
     this.cssClassesList.forEach((String s) => this.cssClasses += s+" ");
     return cssClasses;
   }
 
-  void updatePosition(){
-    this.cssClassesList.removeWhere((String s) => (s.contains('pos')));
-    this.cssClassesList.add("pos"+this.position.toString());
-  }
-
+  // Each toast has three animation case:
+  // Hidden: become showed after show() animation
+  // Showed: become Fade-Out after hide() animation
   void show();
 
   void hide(){
-
   }
 }
