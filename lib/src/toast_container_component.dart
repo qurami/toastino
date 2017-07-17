@@ -43,9 +43,9 @@ class ToastContainer implements OnInit {
       toast.setPosition(this.next);
       toast.setTitle(title);
       toast.setMessage(message);
-      toast.updateCSS();
       next++;
-      new Timer(new Duration(milliseconds: 400), () => toast.action());
+      new Timer(new Duration(milliseconds: 100), () => show(toast));
+      //new Timer(new Duration(milliseconds: 4600), () => hide(toast));
       //new Timer(new Duration(seconds: 5), () => removeFirstToast());
     });
   }
@@ -61,8 +61,26 @@ class ToastContainer implements OnInit {
   // updateActiveToast updates ids after toast removal
   void updateActiveToasts(){
     for (ComponentRef cRef in this.activeToasts){
-      cRef.instance.setPosition(cRef.instance.getPosition()-1);
-      cRef.instance.updateCSS();
+      Toast toast = cRef.instance;
+      toast.setPosition(toast.getPosition()-1);
+      toast.updatePosition();
+      toast.cssClassesToString();
     }
   }
+
+  // Each toast has three animation case:
+  // Hidden: become showed after show() animation
+  // Showed: become Fade-Out after hide() animation
+  void show(Toast toast){
+    toast.updatePosition();
+    toast.show();
+  }
+
+  void hide(Toast toast){
+    toast.hide();
+  }
+
+
 }
+
+

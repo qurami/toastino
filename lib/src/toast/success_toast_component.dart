@@ -4,7 +4,7 @@ import 'package:angular2/core.dart';
 @Component(
   selector: 'success-toast',
   templateUrl: 'toast_component.html',
-  host: const {'[class]' : 'classNames'},
+  host: const {'[class]' : 'cssClasses'},
   styleUrls: const ['toast_component.css'],
 )
 class SuccessToast extends Toast{
@@ -12,7 +12,9 @@ class SuccessToast extends Toast{
   SuccessToast() : super();
 
   @override
-  void action() {
-   this.classNames = classNames + " success";
+  void show() {
+   this.cssClassesList.add('success');
+   print(super.cssClassesToString());
+
   }
 }
