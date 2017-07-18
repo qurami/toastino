@@ -54,10 +54,12 @@ class ToastContainer implements OnInit {
 
   // removeFirstToast removes the first toast in toastList
   void removeFirstToast() {
-    this.activeToasts.first.destroy();
-    this.activeToasts.removeAt(0);
-    updateActiveToasts();
-    next--;
+    if(this.activeToasts.isNotEmpty) {
+      this.activeToasts.first.destroy();
+      this.activeToasts.removeAt(0);
+      updateActiveToasts();
+      next--;
+    }
   }
 
   // updateActiveToast updates positions after toast removal
