@@ -43,8 +43,11 @@ class ToastContainer implements OnInit {
       toast.setPosition(this.next);
       toast.setTitle(title);
       toast.setMessage(message);
+      toast.getStream().listen((t) => t.updateCss());
       next++;
-      new Timer(new Duration(milliseconds: 100), () => toast.show());
+
+      new Timer(new Duration(milliseconds: 400), () => toast.show());
+      new Timer(new Duration(milliseconds: 4600), () => toast.hide());
       new Timer(new Duration(seconds: 5), () => removeFirstToast());
     });
   }
@@ -57,7 +60,7 @@ class ToastContainer implements OnInit {
     next--;
   }
 
-  // updateActiveToast updates ids after toast removal
+  // updateActiveToast updates positions after toast removal
   void updateActiveToasts(){
     for (ComponentRef cRef in this.activeToasts){
       Toast toast = cRef.instance;

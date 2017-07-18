@@ -15,6 +15,6 @@ class SuccessToast extends Toast{
   @override
   void show() {
    this.cssClassesList.add('success');
-   print(super.updateCss());
+   this.streamController.add(this);
   }
 }
