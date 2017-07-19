@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:angular2/core.dart';
-import 'toastino/toast_manager_component.dart';
+import 'package:toastino/toastino.dart';
 
 @Component(
   selector: 'toastino-example',

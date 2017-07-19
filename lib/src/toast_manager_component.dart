@@ -3,7 +3,7 @@ import 'dart:core';
 import 'dart:async';
 import 'package:angular2/angular2.dart';
 
-import 'toast_component.dart';
+import 'package:toastino/src/toast_component.dart';
 
 @Component(
   selector: 'toast-manager',
@@ -29,13 +29,13 @@ class ToastManagerComponent{
       _activeToasts.add(toast);
       next++;
       new Timer(new Duration(seconds: 3), (){
-        killToast(cRef);
+        _killToast(cRef);
         callback();
       });
     });
   }
 
-  void killToast(ComponentRef<ToastComponent> cRef){
+  void _killToast(ComponentRef<ToastComponent> cRef){
     _activeToasts.remove(cRef.instance);
     _activeToasts.forEach((ToastComponent toast){
       if(toast.position > cRef.instance.position)

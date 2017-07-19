@@ -3,7 +3,7 @@
 
 import 'package:angular2/platform/browser.dart';
 
-import 'package:toastino/src/toastino_example_component.dart';
+import '../lib/toastino_example_component.dart';
 
 void main() {
   bootstrap(ToastinoExampleComponent);

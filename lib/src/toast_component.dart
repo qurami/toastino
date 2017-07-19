@@ -17,8 +17,8 @@ class ToastComponent{
   ToastComponent();
 
   void init(String title, int position) {
-    this._title = title;
-    this._position = position;
+    _title = title;
+    _position = position;
   }
 
   void decreasePosition(){
