@@ -3,9 +3,9 @@
 
 import 'package:angular2/platform/browser.dart';
 
-import 'package:toastino/src/toast_container_component.dart';
+import 'package:toastino/src/toastino_example_component.dart';
 
 void main() {
-  bootstrap(ToastContainer);
+  bootstrap(ToastinoExampleComponent);
 
 }
