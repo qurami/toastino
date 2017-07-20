@@ -1,0 +1,26 @@
+:host {
+    height: 50px;
+    width: 150px;
+    border: 2px;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    text-align: center;
+    animation-duration: 1s;
+    transition: all ease 1s;
+    position: absolute;
+    font-size: 7px;
+}
+
+:host(.hidden){
+    top: 100%;
+    opacity: 0;
+}
+
+:host(.fade-out){
+    top:-100%;
+    opacity: 0;
+}
+
+:host(.success){
+    background-color: green;
+}
