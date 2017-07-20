@@ -38,4 +38,4 @@ Provides clear and easy to use notifying system.
 
 ## Libraries
 
-- **[toast_manager_component](./lib/src/toast_manager_component)** - The core of Toastino: It keep trace of every toast created and manages their positioning and removal.
+- **[toast_manager_component](./lib/src/toast_manager_component.dart)** - The core of Toastino: It keep trace of every toast created and manages their positioning and removal.
