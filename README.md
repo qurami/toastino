@@ -25,11 +25,12 @@ Provides clear and easy to use notifying system.
 3. Create a new ToastManagerComponent in your class by this way:
 
     ```dart
-    DynamicComponentLoader _toastComponentLoader;
+    DynamicComponentLoader toastComponentLoader;
     @ViewChild('toastino', read: ViewContainerRef)
-    ViewContainerRef _toastContainerRef;
+    ViewContainerRef toastContainerRef;
     
-    ToastManagerComponent toastManager = new ToastManagerComponent(this._toastComponentLoader, this._toastContainerRef);
+    ClassConstructor(this.toastComponentLoader, this.toastContainerRef)
+    ToastManagerComponent toastManager = new ToastManagerComponent(toastComponentLoader, toastContainerRef);
     ```
     
 4. Call ToastManager's toast method to create a new toast. 
