@@ -33,3 +33,9 @@ Provides clear and easy to use notifying system.
     ```
     
 4. Call ToastManager's toast method to create a new toast. 
+
+---
+
+## Libraries
+
+- **[toast_manager_component](./lib/src/toast_manager_component)** - The core of Toastino: It keep trace of every toast created and manages their positioning and removal.
