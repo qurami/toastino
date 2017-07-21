@@ -1,33 +1,10 @@
 name: toastino
-description: A web app that uses AngularDart Components
+description: Toast component written in AngularDart. Provides clear and easy to use notifying system.
 version: 0.0.1
-#homepage: https://www.example.com
-#author: marco <email@example.com>
-
-environment:
-  sdk: '>=1.23.0 <2.0.0'
-
+#homepage: https://www.example.com TODO
+author: Marco Bramini <braminim@gmail.com>
 dependencies:
   angular2: ^3.0.0
-  angular_components: ^0.5.1
-
 dev_dependencies:
-  angular_test: ^1.0.0-beta+3
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
-  test: ^0.12.0
-
-transformers:
-- angular2:
-    entry_points: web/main.dart
-- angular2/transform/reflection_remover:
-    $include: test/**_test.dart
-- test/pub_serve:
-    $include: test/**_test.dart
-- dart_to_js_script_rewriter
-
-# Uncomment the following in sdk 1.24+ to make pub serve
-# use dartdevc (webdev.dartlang.org/tools/dartdevc).
-#web:
-#  compiler:
-#    debug: dartdevc
