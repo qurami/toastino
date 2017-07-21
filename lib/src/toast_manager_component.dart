@@ -1,3 +1,6 @@
+// Copyright (c) 2017, Marco Bramini. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
 import 'package:angular2/core.dart';
 import 'dart:core';
 import 'dart:async';
@@ -5,6 +8,22 @@ import 'package:angular2/angular2.dart';
 
 import 'package:toastino/src/toast_component.dart';
 
+/// A Toast manager component, it creates and keeps trace of every [ToastComponent] created, managing their positioning and removal.
+/// A new [ToastComponent] can be created using [newToast] method, after than [ToastComponent] has been initialized.
+/// [newToast] takes in input the [ToastComponent]'s title and optional parameters like: callback, duration, position.
+///
+/// __Example usage:__
+///
+///  ToastManagerComponent _toastManager;
+///
+///  ToastinoExampleComponent(DynamicComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
+///   _toastManager = new ToastManagerComponent(toastComponentLoader, viewContainerRef);
+///  }
+///
+///  void toast(String title){
+///   _toastManager.newToast(title, callback: (){print('hi');});
+///  }
+///
 @Component(
   selector: 'toast-manager',
   template: '<ng-content></ng-content>',
@@ -17,11 +36,13 @@ class ToastManagerComponent{
   List<ToastComponent> _activeToasts;
   int next;
 
+  /// Constructor require the injection of a [DynamicComponentLoader] and the [ViewContainerRef] next which will be appended new [ToastComponent].
   ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef){
     _activeToasts = new List<ToastComponent>();
     next = 0;
   }
 
+  /// Handles the creation and removal of a new [ToastComponent] near the given [ViewContainerRef].
   void newToast(String title, {Function callback: null}){
     this._toastComponentLoader.loadNextToLocation(ToastComponent, _viewContainerRef).then((ComponentRef cRef){
       ToastComponent toast = cRef.instance;
@@ -35,6 +56,7 @@ class ToastManagerComponent{
     });
   }
 
+  /// Removes a [ToastComponent] and updates every other's position.
   void _killToast(ComponentRef<ToastComponent> cRef){
     _activeToasts.remove(cRef.instance);
     _activeToasts.forEach((ToastComponent toast){
