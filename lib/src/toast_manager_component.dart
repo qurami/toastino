@@ -54,9 +54,14 @@ class ToastManagerComponent {
       toast.init(title, next);
       _activeToasts.add(toast);
       next++;
-      new Timer(new Duration(seconds: 3), () {
-        _killToast(cRef);
-        callback();
+
+      toast.show();
+      new Timer(new Duration(milliseconds: 2500*_activeToasts.length), (){
+        toast.hide();
+        new Timer(new Duration(milliseconds: 480), () {
+          _killToast(cRef);
+          callback();
+        });
       });
     });
   }
