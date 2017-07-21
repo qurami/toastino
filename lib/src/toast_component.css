@@ -1,13 +1,31 @@
-:host {
-    height: 50px;
-    width: 150px;
-    border: 2px;
-    border-radius: 5px;
-    background-color: cornflowerblue;
-    vertical-align: middle;
-    text-align: center;
-    animation-duration: 600ms;
-    transition: all ease 300ms;
-    position: absolute;
-    font-size: 7px;
+:host{
+
+}
+@media screen and (max-width: 649px) {
+    :host {
+        height: 50px;
+        width: 100%;
+        background-color: cornflowerblue;
+        text-align: center;
+        position: absolute;
+        font-size: 7px;
+        animation-duration: 600ms;
+        transition: all ease 300ms;
+        box-shadow: 0 2px 5px #000000;
+    }
+}
+@media screen and (min-width: 650px) {
+    :host {
+        height: 50px;
+        width: 150px;
+        border-radius: 5px;
+        background-color: cornflowerblue;
+        vertical-align: middle;
+        text-align: center;
+        animation-duration: 600ms;
+        transition: all ease 300ms;
+        position: absolute;
+        font-size: 7px;
+        box-shadow: 0 2px 5px #000000;
+    }
 }
