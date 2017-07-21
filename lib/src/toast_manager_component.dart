@@ -29,7 +29,7 @@ import 'package:toastino/src/toast_component.dart';
   selector: 'toast-manager',
   template: '<ng-content></ng-content>',
 )
-class ToastManagerComponent{
+class ToastManagerComponent {
   DynamicComponentLoader _toastComponentLoader;
 
   ViewContainerRef _viewContainerRef;
@@ -37,20 +37,24 @@ class ToastManagerComponent{
   List<ToastComponent> _activeToasts;
   int next;
 
-  /// Constructor requires the injection of a [DynamicComponentLoader] and the [ViewContainerRef], next which new [ToastComponent]s will be appended.
-  ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef){
+  /// Constructor requires the injection of a [DynamicComponentLoader] and the [ViewContainerRef],
+  /// next which new [ToastComponent]s will be appended.
+  ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef) {
     _activeToasts = new List<ToastComponent>();
     next = 0;
   }
 
   /// Handles the creation and removal of a new [ToastComponent] near the given [ViewContainerRef].
-  void newToast(String title, {Function callback: null}){
-    this._toastComponentLoader.loadNextToLocation(ToastComponent, _viewContainerRef).then((ComponentRef cRef){
+  void newToast(String title, {Function callback: null}) {
+    this
+        ._toastComponentLoader
+        .loadNextToLocation(ToastComponent, _viewContainerRef)
+        .then((ComponentRef cRef) {
       ToastComponent toast = cRef.instance;
       toast.init(title, next);
       _activeToasts.add(toast);
       next++;
-      new Timer(new Duration(seconds: 3), (){
+      new Timer(new Duration(seconds: 3), () {
         _killToast(cRef);
         callback();
       });
@@ -58,11 +62,10 @@ class ToastManagerComponent{
   }
 
   /// Removes a [ToastComponent] and updates every other's position.
-  void _killToast(ComponentRef<ToastComponent> cRef){
+  void _killToast(ComponentRef<ToastComponent> cRef) {
     _activeToasts.remove(cRef.instance);
-    _activeToasts.forEach((ToastComponent toast){
-      if(toast.position > cRef.instance.position)
-        toast.decreasePosition();
+    _activeToasts.forEach((ToastComponent toast) {
+      if (toast.position > cRef.instance.position) toast.decreasePosition();
     });
     cRef.destroy();
     next--;
