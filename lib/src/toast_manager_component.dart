@@ -8,9 +8,10 @@ import 'package:angular2/angular2.dart';
 
 import 'package:toastino/src/toast_component.dart';
 
-/// A Toast manager component, it creates and keeps trace of every [ToastComponent] created, managing their positioning and removal.
+/// A Toast manager component.
+/// It creates and keeps trace of every [ToastComponent] created, managing their positioning and removal.
 /// A new [ToastComponent] can be created using [newToast] method, after than [ToastComponent] has been initialized.
-/// [newToast] takes in input the [ToastComponent]'s title and optional parameters like: callback, duration, position.
+/// [newToast] takes as input the [ToastComponent]'s title and optional parameters like: callback, duration, position.
 ///
 /// __Example usage:__
 ///
@@ -36,7 +37,7 @@ class ToastManagerComponent{
   List<ToastComponent> _activeToasts;
   int next;
 
-  /// Constructor require the injection of a [DynamicComponentLoader] and the [ViewContainerRef] next which will be appended new [ToastComponent].
+  /// Constructor requires the injection of a [DynamicComponentLoader] and the [ViewContainerRef], next which new [ToastComponent]s will be appended.
   ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef){
     _activeToasts = new List<ToastComponent>();
     next = 0;
