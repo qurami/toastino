@@ -1,10 +1,13 @@
 name: toastino
 description: Toast component written in AngularDart. Provides clear and easy to use notifying system.
 version: 0.0.1
-#homepage: https://www.example.com TODO
-author: Marco Bramini <braminim@gmail.com>
+author: Marco Bramini, Qurami <marco.bramini@qurami.com>
 dependencies:
-  angular2: ^3.0.0
+  angular2: ^3.1.0
 dev_dependencies:
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
+transformers:
+- angular2:
+    entry_points: web/main.dart
+- dart_to_js_script_rewriter

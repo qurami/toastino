@@ -15,8 +15,12 @@ Provides clear and easy to use notifying system.
       }
     ```
 
-2. Call ToastManager's toast method to create a new toast.
+2. Call ToastManager's newToast method to create a new toast.
 
+   ```dart
+    _toastManager.newToast(title, callback);
+   ```
+   
 ---
 
 ## Libraries

@@ -1,6 +1,6 @@
-:host{
+/* Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
+ BSD-style license that can be found in the LICENSE file. */
 
-}
 @media screen and (max-width: 649px) {
     :host {
         height: 50px;

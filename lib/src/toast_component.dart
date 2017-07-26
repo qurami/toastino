@@ -1,26 +1,23 @@
-// Copyright (c) 2017, Marco Bramini. All rights reserved. Use of this source code is governed by a
+// Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:core';
 import 'package:angular2/core.dart';
 
 /// A Toast component.
-/// It is created by a [ToastManager], which handles its positioning and removal too.
+/// It's used to display a toast.
 ///
-/// [ToastComponent]'s [_position] affects the host's top property. TODO: optional positioning of toasts and mobile
+/// [ToastComponent]'s [_position] affects the host's bottom property.
 ///
-@Component(
-    selector: 'toast',
-    template: '{{title}}',
-    styleUrls: const [
-      'toast_component.css'
-    ],
-    host: const {
-      '[style.top.px]': 'position * 15',
-      '[style.z-index]': '-position',
-      '[style.animation-name]': 'animation'
-    },
-    styles: const ['''
+
+@Component(selector: 'toast', template: '{{title}}', styleUrls: const [
+  'toast_component.css'
+], host: const {
+  '[style.top.px]': 'position * 15',
+  '[style.z-index]': '-position',
+  '[style.animation-name]': 'animation'
+}, styles: const [
+  '''
       @-webkit-keyframes show {
       from{top:100%; opacity: 0}
       to{top:position; opacity: 1}
@@ -38,7 +35,7 @@ import 'package:angular2/core.dart';
       to{top:-10%; opacity: 0}
       }
       '''
-    ])
+])
 class ToastComponent {
   String _title;
 

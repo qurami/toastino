@@ -1,4 +1,4 @@
-// Copyright (c) 2017, Marco Bramini. All rights reserved. Use of this source code is governed by a
+// Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:angular2/core.dart';
@@ -11,7 +11,7 @@ import 'package:toastino/src/toast_component.dart';
 /// A Toast manager component.
 /// It creates and keeps trace of every [ToastComponent] created, managing their positioning and removal.
 /// A new [ToastComponent] can be created using [newToast] method, after than [ToastComponent] has been initialized.
-/// [newToast] takes as input the [ToastComponent]'s title and optional parameters like: callback, duration, position.
+/// [newToast] takes as input the [ToastComponent]'s title and optional parameters, like callback.
 ///
 /// __Example usage:__
 ///
@@ -56,7 +56,7 @@ class ToastManagerComponent {
       next++;
 
       toast.show();
-      new Timer(new Duration(milliseconds: 2500*_activeToasts.length), (){
+      new Timer(new Duration(milliseconds: 2500 * _activeToasts.length), () {
         toast.hide();
         new Timer(new Duration(milliseconds: 480), () {
           _killToast(cRef);
