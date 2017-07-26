@@ -34,7 +34,7 @@ class ToastManagerComponent {
 
   ViewContainerRef _viewContainerRef;
 
-  var _streamController;
+  StreamController<String> _streamController;
   Stream<String> _stream;
 
   List<Map> _toastsQueue;
@@ -48,10 +48,10 @@ class ToastManagerComponent {
     _stream = _streamController.stream;
     _toastsQueue = new List<Map>();
 
-    _stream.listen((String s) {
-      if (s == "add" && _activeToastRef == null)
+    _stream.listen((String eventType) {
+      if (eventType == "toast_added" && _activeToastRef == null)
         loadNextToast();
-      else if (s == "remove" && _toastsQueue.length > 0) loadNextToast();
+      else if (eventType == "toast_removed" && _toastsQueue.length > 0) loadNextToast();
     });
   }
 
@@ -59,7 +59,7 @@ class ToastManagerComponent {
   /// An event is propagated to trigger [ToastComponent] loading.
   void newToast(String title, {Function callback: null}) {
     _toastsQueue.add({"title": title, "callback": callback});
-    _streamController.add("add");
+    _streamController.add("toast_added");
   }
 
   /// Creates dynamically a [ToastComponent] near [_viewContainerRef] and schedules its removal.
@@ -80,7 +80,7 @@ class ToastManagerComponent {
         new Timer(new Duration(milliseconds: 500), () {
           cRef.destroy();
           _activeToastRef = null;
-          _streamController.add("remove");
+          _streamController.add("toast_removed");
         });
       });
     });

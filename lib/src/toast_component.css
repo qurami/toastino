@@ -3,29 +3,57 @@
 
 @media screen and (max-width: 649px) {
     :host {
-        height: 50px;
+        display: flex;
+        position: fixed;
+        bottom:0;
+        justify-content: flex-start;
+        align-items: center;
         width: 100%;
-        background-color: cornflowerblue;
-        text-align: center;
-        position: absolute;
-        font-size: 7px;
+        min-height: 8%;
+        max-height: 15%;
+        background-color: #323232;
+        padding-right: 24px;
+        padding-left: 24px;
+        font-family: Roboto, serif;
+        font-size: 14px;
+        color: #FFFFFF;
         animation-duration: 600ms;
-        transition: all ease 300ms;
-        box-shadow: 0 2px 5px #000000;
     }
 }
 @media screen and (min-width: 650px) {
     :host {
-        height: 50px;
-        width: 150px;
-        border-radius: 5px;
-        background-color: cornflowerblue;
-        vertical-align: middle;
-        text-align: center;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        justify-content: flex-start;
+        align-items: center;
+        height: 8%;
+        min-width: 288px;
+        max-width: 568px;
+        border-radius: 2px;
+        background-color: #323232;
+        padding-right: 24px;
+        padding-left: 24px;
+        font-family: Roboto, serif;
+        font-size: 14px;
+        color: #FFFFFF;
+        margin-left: 24px;
         animation-duration: 600ms;
-        transition: all ease 300ms;
-        position: absolute;
-        font-size: 7px;
-        box-shadow: 0 2px 5px #000000;
     }
+}
+@-webkit-keyframes show {
+    from{bottom:-10%; opacity: 0}
+    to{bottom:0; opacity: 1}
+}
+@keyframes show {
+    from{bottom:-10%; opacity: 0}
+    to{bottom:0; opacity: 1}
+}
+@-webkit-keyframes hide {
+    from{bottom:0; opacity: 1}
+    to{bottom:-10%; opacity: 0}
+}
+@keyframes hide {
+    from{bottom:0; opacity: 1}
+    to{bottom:-10%; opacity: 0}
 }
