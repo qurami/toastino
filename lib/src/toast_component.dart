@@ -13,25 +13,23 @@ import 'package:angular2/core.dart';
 @Component(selector: 'toast', template: '{{title}}', styleUrls: const [
   'toast_component.css'
 ], host: const {
-  '[style.top.px]': 'position * 15',
-  '[style.z-index]': '-position',
   '[style.animation-name]': 'animation'
 }, styles: const [
   '''
       @-webkit-keyframes show {
-      from{top:100%; opacity: 0}
-      to{top:position; opacity: 1}
+      from{top:90%; opacity: 0}
+      to{top:0; opacity: 1}
       }
       @keyframes show {
-      from{top:100%; opacity: 0}
-      to{top:position; opacity: 1}
+      from{top:90%; opacity: 0}
+      to{top:0; opacity: 1}
       }
       @-webkit-keyframes hide {
-      from{top:position; opacity: 1}
+      from{top:0; opacity: 1}
       to{top:-10%; opacity: 0}
       }
       @keyframes hide {
-      from{top:position; opacity: 1}
+      from{top:0; opacity: 1}
       to{top:-10%; opacity: 0}
       }
       '''
@@ -41,10 +39,6 @@ class ToastComponent {
 
   String get title => _title;
 
-  int _position;
-
-  int get position => _position;
-
   String _animation;
 
   String get animation => _animation;
@@ -52,14 +46,8 @@ class ToastComponent {
   ToastComponent();
 
   /// Initialize [ToastComponent].
-  void init(String title, int position) {
+  void init(String title) {
     _title = title;
-    _position = position;
-  }
-
-  /// Decrease [ToastComponent]'s position by one.
-  void decreasePosition() {
-    _position--;
   }
 
   void show() {
