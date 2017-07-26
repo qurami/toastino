@@ -1,0 +1,59 @@
+/* Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
+ BSD-style license that can be found in the LICENSE file. */
+
+@media screen and (max-width: 649px) {
+    :host {
+        display: flex;
+        position: fixed;
+        bottom:0;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        min-height: 8%;
+        max-height: 15%;
+        background-color: #323232;
+        padding-right: 24px;
+        padding-left: 24px;
+        font-family: Roboto, serif;
+        font-size: 14px;
+        color: #FFFFFF;
+        animation-duration: 600ms;
+    }
+}
+@media screen and (min-width: 650px) {
+    :host {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        justify-content: flex-start;
+        align-items: center;
+        height: 8%;
+        min-width: 288px;
+        max-width: 568px;
+        border-radius: 2px;
+        background-color: #323232;
+        padding-right: 24px;
+        padding-left: 24px;
+        font-family: Roboto, serif;
+        font-size: 14px;
+        color: #FFFFFF;
+        margin-left: 24px;
+        animation-duration: 600ms;
+    }
+}
+@-webkit-keyframes show {
+    from{bottom:-10%; opacity: 0}
+    to{bottom:0; opacity: 1}
+}
+@keyframes show {
+    from{bottom:-10%; opacity: 0}
+    to{bottom:0; opacity: 1}
+}
+@-webkit-keyframes hide {
+    from{bottom:0; opacity: 1}
+    to{bottom:-10%; opacity: 0}
+}
+@keyframes hide {
+    from{bottom:0; opacity: 1}
+    to{bottom:-10%; opacity: 0}
+}
