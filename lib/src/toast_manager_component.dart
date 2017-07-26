@@ -48,35 +48,36 @@ class ToastManagerComponent {
     _stream = _streamController.stream;
     _toastsQueue = new List<Map>();
 
-    _stream.listen((String s){
-      if(s=="add" && _activeToastRef==null)
+    _stream.listen((String s) {
+      if (s == "add" && _activeToastRef == null)
         loadNextToast();
-      else if(s=="remove" && _toastsQueue.length>0)
-        loadNextToast();
+      else if (s == "remove" && _toastsQueue.length > 0) loadNextToast();
     });
   }
 
   /// Adds new toast properties list to [_toastsQueue] list.
   /// An event is propagated to trigger [ToastComponent] loading.
-  void newToast(String title, {Function callback: null}){
+  void newToast(String title, {Function callback: null}) {
     _toastsQueue.add({"title": title, "callback": callback});
     _streamController.add("add");
   }
 
   /// Creates dynamically a [ToastComponent] near [_viewContainerRef] and schedules its removal.
   /// When removal is completed, an event is propagated.
-  void loadNextToast(){
-    _toastComponentLoader.loadNextToLocation(ToastComponent, _viewContainerRef).then((ComponentRef cRef){
+  void loadNextToast() {
+    _toastComponentLoader
+        .loadNextToLocation(ToastComponent, _viewContainerRef)
+        .then((ComponentRef cRef) {
       _activeToastRef = cRef;
       ToastComponent toast = cRef.instance;
       toast.init(_toastsQueue.first['title']);
-      
+
       _toastsQueue.remove(_toastsQueue.first);
-      
+
       toast.show();
-      new Timer(new Duration(milliseconds: 2000), (){
+      new Timer(new Duration(milliseconds: 2000), () {
         toast.hide();
-        new Timer(new Duration(milliseconds: 500), (){
+        new Timer(new Duration(milliseconds: 500), () {
           cRef.destroy();
           _activeToastRef = null;
           _streamController.add("remove");
@@ -84,5 +85,4 @@ class ToastManagerComponent {
       });
     });
   }
-
 }
