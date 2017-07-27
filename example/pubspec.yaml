@@ -8,8 +8,11 @@ dependencies:
     path: ..
 dev_dependencies:
   browser: ^0.10.0
-  dart_to_js_script_rewriter: ^1.0.1
+  dart_to_js_script_rewriter: "^1.0.3"
 transformers:
 - angular2:
-    entry_points: web/main.dart
+    platform_directives:
+    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
+    platform_pipes:
+    - 'package:angular2/common.dart#COMMON_PIPES'
 - dart_to_js_script_rewriter
