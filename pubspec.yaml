@@ -4,6 +4,11 @@ version: 0.0.1
 author: Marco Bramini, Qurami <marco.bramini@qurami.com>
 dependencies:
   angular2: ^3.1.0
+  dart_to_js_script_rewriter: "^1.0.3"
 transformers:
 - angular2:
-    entry_points: web/main.dart
+    platform_directives:
+    - 'package:angular2/common.dart#COMMON_DIRECTIVES'
+    platform_pipes:
+    - 'package:angular2/common.dart#COMMON_PIPES'
+- dart_to_js_script_rewriter
