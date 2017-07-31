@@ -75,7 +75,7 @@ class ToastManagerComponent {
       _toastsQueue.remove(_toastsQueue.first);
 
       toast.show();
-      new Timer(new Duration(milliseconds: 2000), () {
+      new Timer(new Duration(milliseconds: 3000), () {
         toast.hide();
         new Timer(new Duration(milliseconds: 500), () {
           cRef.destroy();
