@@ -4,7 +4,7 @@
 @media screen and (max-width: 649px) {
     :host {
         display: flex;
-        position: fixed;
+        position: absolute;
         bottom:0;
         justify-content: flex-start;
         align-items: center;
@@ -23,7 +23,7 @@
 @media screen and (min-width: 650px) {
     :host {
         display: flex;
-        position: fixed;
+        position: absolute;
         bottom: 0;
         justify-content: flex-start;
         align-items: center;
