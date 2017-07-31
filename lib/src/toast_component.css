@@ -4,7 +4,7 @@
 @media screen and (max-width: 649px) {
     :host {
         display: flex;
-        position: absolute;
+        position: fixed;
         bottom:0;
         left: 0;
         right:0;
@@ -25,8 +25,10 @@
 @media screen and (min-width: 650px) {
     :host {
         display: flex;
-        position: absolute;
+        position: fixed;
         bottom: 0;
+        left: 0;
+        right:0;
         justify-content: flex-start;
         align-items: center;
         height: 8%;
@@ -41,6 +43,7 @@
         color: #FFFFFF;
         margin-left: 24px;
         animation-duration: 600ms;
+        overflow: hidden;
     }
 }
 @-webkit-keyframes show {
