@@ -43,7 +43,6 @@
         color: #FFFFFF;
         margin-left: 24px;
         animation-duration: 600ms;
-        overflow: hidden;
     }
 }
 @-webkit-keyframes show {
