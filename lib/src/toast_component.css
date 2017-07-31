@@ -6,6 +6,8 @@
         display: flex;
         position: fixed;
         bottom:0;
+        left: 0;
+        right:0;
         justify-content: flex-start;
         align-items: center;
         width: 100%;
@@ -25,6 +27,8 @@
         display: flex;
         position: fixed;
         bottom: 0;
+        left: 0;
+        right:0;
         justify-content: flex-start;
         align-items: center;
         height: 8%;
