@@ -25,10 +25,7 @@ import 'package:toastino/src/toast_component.dart';
 ///   _toastManager.newToast(title, callback: (){print('hi');});
 ///  }
 ///
-@Component(
-  selector: 'toast-manager',
-  template: '<ng-content></ng-content>',
-)
+@Component(selector: 'toast-manager', template: '<ng-content></ng-content>')
 class ToastManagerComponent {
   SlowComponentLoader
       _toastComponentLoader; // TODO should use faster ComponentLoader
@@ -52,7 +49,8 @@ class ToastManagerComponent {
     _stream.listen((String eventType) {
       if (eventType == "toast_added" && _activeToastRef == null)
         loadNextToast();
-      else if (eventType == "toast_removed" && _toastsQueue.length > 0) loadNextToast();
+      else if (eventType == "toast_removed" && _toastsQueue.length > 0)
+        loadNextToast();
     });
   }
 
