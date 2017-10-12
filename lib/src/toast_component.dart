@@ -2,7 +2,8 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:core';
-import 'package:angular2/core.dart';
+
+import 'package:angular/angular.dart';
 
 /// A Toast component.
 /// It's used to display a toast.

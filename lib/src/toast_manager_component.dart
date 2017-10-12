@@ -1,10 +1,10 @@
 // Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 import 'dart:async';
-import 'package:angular2/core.dart';
 import 'dart:core';
-import 'package:angular2/angular2.dart';
 
+import 'package:angular/angular.dart';
+import 'package:angular/core.dart';
 import 'package:toastino/src/toast_component.dart';
 
 /// A Toast manager component.
@@ -17,7 +17,7 @@ import 'package:toastino/src/toast_component.dart';
 ///
 ///  ToastManagerComponent _toastManager;
 ///
-///  ToastinoExampleComponent(DynamicComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
+///  ToastinoExampleComponent(SlowComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
 ///   _toastManager = new ToastManagerComponent(toastComponentLoader, viewContainerRef);
 ///  }
 ///
@@ -30,7 +30,8 @@ import 'package:toastino/src/toast_component.dart';
   template: '<ng-content></ng-content>',
 )
 class ToastManagerComponent {
-  DynamicComponentLoader _toastComponentLoader;
+  SlowComponentLoader
+      _toastComponentLoader; // TODO should use faster ComponentLoader
 
   ViewContainerRef _viewContainerRef;
 
@@ -41,7 +42,7 @@ class ToastManagerComponent {
 
   ComponentRef _activeToastRef;
 
-  /// Constructor requires the injection of a [DynamicComponentLoader] and the [ViewContainerRef],
+  /// Constructor requires the injection of a [SlowComponentLoader] and the [ViewContainerRef],
   /// next which new [ToastComponent]s will be appended.
   ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef) {
     _streamController = new StreamController<String>();
