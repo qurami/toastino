@@ -27,7 +27,8 @@ import 'package:toastino/src/toast_component.dart';
 ///
 @Component(selector: 'toast-manager', template: '<ng-content></ng-content>')
 class ToastManagerComponent {
-  ComponentLoader _toastComponentLoader;
+  SlowComponentLoader
+      _toastComponentLoader; // TODO should use faster ComponentLoader
 
   ViewContainerRef _viewContainerRef;
 
