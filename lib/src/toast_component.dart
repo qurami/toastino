@@ -2,19 +2,19 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'dart:core';
-import 'package:angular2/core.dart';
+
+import 'package:angular/angular.dart';
 
 /// A Toast component.
 /// It's used to display a toast.
 ///
 /// [ToastComponent]'s [_position] affects the host's bottom property.
 ///
-
-@Component(selector: 'toast', template: '{{title}}', styleUrls: const [
-  'toast_component.css'
-], host: const {
-  '[style.animation-name]': 'animation'
-})
+@Component(
+    selector: 'toast',
+    template: '{{title}}',
+    styleUrls: const ['toast_component.css'],
+    host: const {'[style.animation-name]': 'animation'})
 class ToastComponent {
   String _title;
 
