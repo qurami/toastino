@@ -6,6 +6,7 @@ import 'dart:core';
 import 'package:angular/angular.dart';
 import 'package:angular/core.dart';
 import 'package:toastino/src/toast_component.dart';
+import 'package:toastino/src/toast_component.template.dart' as toastino;
 
 /// A Toast manager component.
 /// It handles the creation of [ToastComponent]s, one at a time, and schedules their removal.
@@ -27,8 +28,7 @@ import 'package:toastino/src/toast_component.dart';
 ///
 @Component(selector: 'toast-manager', template: '<ng-content></ng-content>')
 class ToastManagerComponent {
-  SlowComponentLoader
-      _toastComponentLoader; // TODO should use faster ComponentLoader
+  ComponentLoader _toastComponentLoader;
 
   ViewContainerRef _viewContainerRef;
 
@@ -39,7 +39,7 @@ class ToastManagerComponent {
 
   ComponentRef _activeToastRef;
 
-  /// Constructor requires the injection of a [SlowComponentLoader] and the [ViewContainerRef],
+  /// Constructor requires the injection of a [ComponentLoader] and the [ViewContainerRef],
   /// next which new [ToastComponent]s will be appended.
   ToastManagerComponent(this._toastComponentLoader, this._viewContainerRef) {
     _streamController = new StreamController<String>();
@@ -64,24 +64,30 @@ class ToastManagerComponent {
   /// Creates dynamically a [ToastComponent] near [_viewContainerRef] and schedules its removal.
   /// When removal is completed, an event is propagated.
   void loadNextToast() {
-    _toastComponentLoader
-        .loadNextToLocation(ToastComponent, _viewContainerRef)
-        .then((ComponentRef cRef) {
-      _activeToastRef = cRef;
-      ToastComponent toast = cRef.instance;
-      toast.init(_toastsQueue.first['title']);
+    ComponentRef cRef = _toastComponentLoader.loadNextToLocation(
+      toastino.ToastComponentNgFactory,
+      _viewContainerRef,
+    );
+    _activeToastRef = cRef;
+    ToastComponent toast = cRef.instance;
+    toast.init(_toastsQueue.first['title']);
 
-      _toastsQueue.remove(_toastsQueue.first);
+    _toastsQueue.remove(_toastsQueue.first);
 
-      toast.show();
-      new Timer(new Duration(milliseconds: 3000), () {
+    toast.show();
+    new Timer(
+      new Duration(milliseconds: 3000),
+      () {
         toast.hide();
-        new Timer(new Duration(milliseconds: 500), () {
-          cRef.destroy();
-          _activeToastRef = null;
-          _streamController.add("toast_removed");
-        });
-      });
-    });
+        new Timer(
+          new Duration(milliseconds: 500),
+          () {
+            cRef.destroy();
+            _activeToastRef = null;
+            _streamController.add("toast_removed");
+          },
+        );
+      },
+    );
   }
 }
