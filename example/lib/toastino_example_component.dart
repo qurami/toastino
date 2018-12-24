@@ -11,15 +11,20 @@ import 'package:toastino/toastino.dart';
 class ToastinoExampleComponent {
   ToastManagerComponent _toastManager;
 
-  ToastinoExampleComponent(SlowComponentLoader toastComponentLoader,
-      ViewContainerRef viewContainerRef) {
+  ToastinoExampleComponent(
+    ComponentLoader toastComponentLoader,
+    ViewContainerRef viewContainerRef,
+  ) {
     _toastManager =
         new ToastManagerComponent(toastComponentLoader, viewContainerRef);
   }
 
   void toast(String title) {
-    _toastManager.newToast(title, callback: () {
-      print('hi');
-    });
+    _toastManager.newToast(
+      title,
+      callback: () {
+        print('hi');
+      },
+    );
   }
 }
