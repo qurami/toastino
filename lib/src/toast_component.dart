@@ -16,29 +16,13 @@ import 'package:angular/angular.dart';
   styleUrls: ['toast_component.css'],
 )
 class ToastComponent {
-  @HostBinding('style.animation-name')
-  final String animationName = "animation";
-
   String _title;
-
   String get title => _title;
-
-  String _animation;
-
-  String get animation => _animation;
 
   ToastComponent();
 
   /// Initialize [ToastComponent].
   void init(String title) {
     _title = title;
-  }
-
-  void show() {
-    _animation = "show";
-  }
-
-  void hide() {
-    _animation = "hide";
   }
 }

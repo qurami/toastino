@@ -74,19 +74,12 @@ class ToastManagerComponent {
 
     _toastsQueue.remove(_toastsQueue.first);
 
-    toast.show();
-    new Timer(
-      new Duration(milliseconds: 3000),
+    Timer(
+      Duration(milliseconds: 4000),
       () {
-        toast.hide();
-        new Timer(
-          new Duration(milliseconds: 500),
-          () {
-            cRef.destroy();
-            _activeToastRef = null;
-            _streamController.add("toast_removed");
-          },
-        );
+        cRef.destroy();
+        _activeToastRef = null;
+        _streamController.add("toast_removed");
       },
     );
   }
