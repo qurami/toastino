@@ -11,11 +11,14 @@ import 'package:angular/angular.dart';
 /// [ToastComponent]'s [_position] affects the host's bottom property.
 ///
 @Component(
-    selector: 'toast',
-    template: '{{title}}',
-    styleUrls: const ['toast_component.css'],
-    host: const {'[style.animation-name]': 'animation'})
+  selector: 'toast',
+  template: '{{title}}',
+  styleUrls: ['toast_component.css'],
+)
 class ToastComponent {
+  @HostBinding('style.animation-name')
+  final String animationName = "animation";
+
   String _title;
 
   String get title => _title;
