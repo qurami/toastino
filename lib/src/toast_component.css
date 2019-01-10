@@ -1,70 +1,53 @@
 /* Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
  BSD-style license that can be found in the LICENSE file. */
 
-@media screen and (max-width: 649px) {
+:host {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #14171A;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-size: 16px;
+    color: #FFFFFF;
+    animation: animate-in-out 4000ms forwards;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
     :host {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        justify-content: flex-start;
-        align-items: center;
         width: 100%;
         min-height: 8%;
         max-height: 15%;
-        background-color: #323232;
-        padding-right: 24px;
-        padding-left: 24px;
-        font-family: Roboto, serif;
-        font-size: 14px;
-        color: #FFFFFF;
-        animation-duration: 600ms;
     }
 }
 
-@media screen and (min-width: 650px) {
+/* Desktop */
+@media screen and (min-width: 601px) {
     :host {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        justify-content: flex-start;
-        align-items: center;
+        margin-left: 24px;
         height: 8%;
         min-width: 288px;
         max-width: 568px;
-        border-radius: 2px;
-        background-color: #323232;
-        padding-right: 24px;
-        padding-left: 24px;
-        font-family: Roboto, serif;
-        font-size: 14px;
-        color: #FFFFFF;
-        margin-left: 24px;
-        animation-duration: 600ms;
+        border-radius: 10px 10px 0 0;
     }
 }
 
-@keyframes show {
-    from {
+@keyframes animate-in-out {
+    0% {
         bottom: -10%;
-        opacity: 0
     }
-    to {
+    10% {
         bottom: 0;
-        opacity: 1
     }
-}
-
-@keyframes hide {
-    from {
+    90% {
         bottom: 0;
-        opacity: 1
     }
-    to {
+    100% {
         bottom: -10%;
-        opacity: 0
     }
 }

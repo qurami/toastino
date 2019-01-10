@@ -10,7 +10,7 @@ Provides clear and easy to use notifying system.
     ```dart
      ToastManagerComponent _toastManager;
 
-      ToastinoExampleComponent(SlowComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
+      ToastinoExampleComponent(ComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
            _toastManager = new ToastManagerComponent(toastComponentLoader, viewContainerRef);
       }
     ```
