@@ -1,4 +1,4 @@
-// Copyright (c) 2017, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
+// Copyright (c) 2019, Marco Bramini, Qurami. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 import 'dart:async';
 import 'dart:core';
@@ -18,7 +18,7 @@ import 'package:toastino/src/toast_component.template.dart' as toastino;
 ///
 ///  ToastManagerComponent _toastManager;
 ///
-///  ToastinoExampleComponent(SlowComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
+///  ToastinoExampleComponent(ComponentLoader toastComponentLoader, ViewContainerRef viewContainerRef){
 ///   _toastManager = new ToastManagerComponent(toastComponentLoader, viewContainerRef);
 ///  }
 ///
